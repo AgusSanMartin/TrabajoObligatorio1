@@ -81,4 +81,7 @@ public class Obra {
         }else
             geteList().add(maestroMObra);
     }
+    public void addObrero(Obrero obrero){
+        geteList().add(obrero);
+    }
 }
