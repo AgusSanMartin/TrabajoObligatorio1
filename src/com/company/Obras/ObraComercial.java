@@ -22,4 +22,8 @@ public class ObraComercial extends Obra{
 
     public String getObraNombre() { return obraNombre; }
 
+    @Override
+    public void mostrarEmpleadosHelper() {
+        System.out.printf("Lista de empleados de la obra '%s':\n",getObraNombre());
+    }
 }

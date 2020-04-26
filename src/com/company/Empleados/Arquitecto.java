@@ -4,7 +4,7 @@ public class Arquitecto extends  Empleado{
     private String matricula;
 
     public Arquitecto(String nombre, String DNI, String TEL,String Matricula){
-        super(nombre, DNI, TEL);
+        super(DNI, nombre, TEL);
         this.matricula = Matricula;
         this.setCostoPdia(2000);
     }
@@ -13,7 +13,7 @@ public class Arquitecto extends  Empleado{
 
 
     public void crearPLano(){
-        System.out.println("Creando mi proximo plano.");
+        System.out.printf("Arquitecto %s : Creando mi proximo plano.\n", this.getNombre());
     }
 
 }

@@ -6,7 +6,7 @@ public class MaestroMObra extends Empleado implements Constructores {
     private int edad;
 
     public MaestroMObra(String nombre, String DNI, String TEL, int edad){
-        super(nombre, DNI, TEL);
+        super(DNI, nombre, TEL);
         this.edad = edad;
         this.setCostoPdia(1800);
     }
@@ -14,5 +14,5 @@ public class MaestroMObra extends Empleado implements Constructores {
     public int getEdad() { return edad; }
 
     @Override
-    public void Construir() { System.out.println("“Soy maestro y superviso las construcciones"); }
+    public void Construir() { System.out.printf("Maestro mayor: %s y superviso las construcciones\n", getNombre()); }
 }

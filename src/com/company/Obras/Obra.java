@@ -84,4 +84,24 @@ public class Obra {
     public void addObrero(Obrero obrero){
         geteList().add(obrero);
     }
+    public void mostrarEmpleadosHelper(){
+        System.out.printf("Lista de empleados de la obra:\n");
+    }
+
+    public void mostrarEmpleados(){
+        mostrarEmpleadosHelper();
+        for (Empleado e: eList) {
+            if (e instanceof Arquitecto)
+            {
+                Arquitecto a = (Arquitecto) e;
+                System.out.printf("Arquitecto: %s, DNI: %s, TEL: %s, Matricula: %s, Costo: %s\n",a.getNombre(), a.getDNI(), a.getTEL(), a.getMatricula(), a.getCostoPdia());
+            }else if (e instanceof MaestroMObra){
+                MaestroMObra m = (MaestroMObra) e;
+                System.out.printf("Maestro Mayor: %s, DNI: %s, TEL: %s, Edad: %s, Costo: %s\n",m.getNombre(), m.getDNI(), m.getTEL(), m.getEdad(), m.getCostoPdia());
+            }else if (e instanceof  Obrero){
+                Obrero o = (Obrero) e;
+                System.out.printf("Obrero: %s, DNI: %s, TEL: %s, Edad: %s, Costo: %s \n",o.getNombre(), o.getDNI(), o.getTEL(), o.getEdad(), o.getCostoPdia());
+            }
+        }
+    }
 }

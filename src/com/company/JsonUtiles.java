@@ -1,20 +1,22 @@
 package com.company;
 
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
+import java.io.Reader;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
+import com.google.gson.Gson;
 import org.json.JSONArray;
-import org.json.JSONException;
 
 
 public class JsonUtiles {
     public static void grabar(JSONArray array) {
         try {
             FileWriter file = new FileWriter("Empresa.json");
-            file.write(array.toString());
+            file.write(String.valueOf(array));
             file.flush();
             file.close();
 
@@ -27,16 +29,20 @@ public class JsonUtiles {
     {
         try
         {
-            String contenido = new String(Files.readAllBytes(Paths.get("Empresa.json")));
-            JSONArray array = new JSONArray(contenido);
-            System.out.println(array.toString());
+            Gson gson = new Gson();
+            Reader reader = new FileReader(String.valueOf(Paths.get("Empresa.json")));
+
+            ArrayList list = gson.fromJson(reader, ArrayList.class);
+            System.out.println(list);
+
+
         }
         catch (IOException e)
         {
             e.printStackTrace();
-        } catch (JSONException e) {
+        }/* catch (JSONException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 }

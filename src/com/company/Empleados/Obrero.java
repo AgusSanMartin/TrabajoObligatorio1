@@ -6,7 +6,7 @@ public class Obrero extends Empleado implements Constructores {
     private int edad;
 
     public Obrero(String nombre, String DNI, String TEL, int edad){
-        super(nombre, DNI, TEL);
+        super(DNI, nombre, TEL);
         this.edad = edad;
         this.setCostoPdia(1500);
     }
@@ -15,6 +15,6 @@ public class Obrero extends Empleado implements Constructores {
 
     @Override
     public void Construir() {
-        System.out.println("“Soy maestro y superviso las construcciones");
+        System.out.printf("Obrero: %s construyendo!\n",getNombre());
     }
 }
