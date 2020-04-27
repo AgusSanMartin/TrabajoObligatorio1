@@ -3,8 +3,10 @@ package com.company.Obras;
 import com.company.Empleados.Arquitecto;
 import com.company.Empleados.MaestroMObra;
 import com.company.Empleados.Obrero;
+import com.company.Listable;
 
-public class ObraDomestica extends Obra{
+public class ObraDomestica extends Obra implements Listable {
+
     private int cantHabitaciones;
 
     public ObraDomestica(String direccion,
@@ -23,4 +25,14 @@ public class ObraDomestica extends Obra{
     public int getCantHabitaciones() { return cantHabitaciones; }
 
 
+    @Override
+    public void mostrar() {
+        System.out.printf("Obra domestica: Direccion: %s, Dias de obra: %d, Mts²: %d, Costo Empleados: %d, Habitaciones: %d, Costo Total de la obra: $%.2f\n"
+                ,getDireccion(),
+                getDiasObra(),
+                getMtsCuadrados(),
+                getCostoEmpleados(),
+                getCantHabitaciones(),
+                getCostoObra());
+    }
 }

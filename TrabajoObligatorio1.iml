@@ -10,5 +10,6 @@
     <orderEntry type="library" name="json-simple-1.1.1" level="project" />
     <orderEntry type="library" name="java-json" level="project" />
     <orderEntry type="library" name="gson-2.8.2" level="project" />
+    <orderEntry type="library" name="plantuml.1.2020.7" level="project" />
   </component>
 </module>

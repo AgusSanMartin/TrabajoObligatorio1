@@ -4,7 +4,8 @@ import com.company.Empleados.Arquitecto;
 import com.company.Empleados.MaestroMObra;
 import com.company.Empleados.Obrero;
 
-public class ObraComercial extends Obra{
+public class ObraComercial extends Obra {
+
     private String obraNombre;
 
     public ObraComercial(String direccion,

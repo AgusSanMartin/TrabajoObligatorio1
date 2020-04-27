@@ -3,8 +3,9 @@ package com.company.Obras;
 import com.company.Empleados.Arquitecto;
 import com.company.Empleados.MaestroMObra;
 import com.company.Empleados.Obrero;
+import com.company.Listable;
 
-public class Hotel extends ObraComercial{
+public class Hotel extends ObraComercial implements Listable {
     private int pisos;
 
     public Hotel(String direccion,
@@ -23,4 +24,15 @@ public class Hotel extends ObraComercial{
 
     public int getPisos() { return pisos; }
 
+    @Override
+    public void mostrar() {
+        System.out.printf("Hotel '%s': Direccion: %s, Dias de obra: %d, Mts²: %d, Costo Empleados: %d, Pisos: %d, Costo Total de la obra: $%.2f\n"
+                ,getObraNombre()
+                ,getDireccion()
+                ,getDiasObra()
+                ,getMtsCuadrados()
+                ,getCostoEmpleados()
+                ,getPisos()
+                ,getCostoObra());
+    }
 }

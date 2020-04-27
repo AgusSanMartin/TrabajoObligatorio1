@@ -1,22 +1,14 @@
 package com.company;
 import com.company.Obras.*;
 import com.company.Empleados.*;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Empresa {
     private String nombre;
-    private List<Obra> obrasList = new ArrayList<Obra>();
-    private List<Arquitecto> aList = new ArrayList<Arquitecto>();
-    private List<MaestroMObra> mList = new ArrayList<MaestroMObra>();
-    private List<Obrero> oList = new ArrayList<Obrero>();
-    private List<ObraDomestica> oDList = new ArrayList<ObraDomestica>();
-    private List<Hotel> hList = new ArrayList<Hotel>();
-    private List<Comercio> cList = new ArrayList<Comercio>();
+    private List<Obra> obrasList = new ArrayList<>();
+    private List<Empleado> empleadosList = new ArrayList<>();
 
     public Empresa(String nombre) {
         this.nombre = nombre;
@@ -40,25 +32,25 @@ public class Empresa {
         Obrero O10 = new Obrero("Tomas Garmendia", "29.665.430", "+542235741788", 36);
         Obrero O11 = new Obrero("Fernando Ferreyra", "28.245.021", "+542236241446", 37);
 
-        this.aList.add(A1);
-        this.aList.add(A2);
-        this.aList.add(A3);
-        this.mList.add(M1);
-        this.mList.add(M2);
-        this.mList.add(M3);
-        this.mList.add(M4);
-        this.mList.add(M5);
-        this.oList.add(O1);
-        this.oList.add(O2);
-        this.oList.add(O3);
-        this.oList.add(O4);
-        this.oList.add(O5);
-        this.oList.add(O6);
-        this.oList.add(O7);
-        this.oList.add(O8);
-        this.oList.add(O9);
-        this.oList.add(O10);
-        this.oList.add(O11);
+        this.empleadosList.add(A1);
+        this.empleadosList.add(A2);
+        this.empleadosList.add(A3);
+        this.empleadosList.add(M1);
+        this.empleadosList.add(M2);
+        this.empleadosList.add(M3);
+        this.empleadosList.add(M4);
+        this.empleadosList.add(M5);
+        this.empleadosList.add(O1);
+        this.empleadosList.add(O2);
+        this.empleadosList.add(O3);
+        this.empleadosList.add(O4);
+        this.empleadosList.add(O5);
+        this.empleadosList.add(O6);
+        this.empleadosList.add(O7);
+        this.empleadosList.add(O8);
+        this.empleadosList.add(O9);
+        this.empleadosList.add(O10);
+        this.empleadosList.add(O11);
 
 
         Hotel H1 = new Hotel("Salta 2233", 120, 180, 25, A1, M1, O1, O2, "Sheraton", 40);
@@ -107,66 +99,63 @@ public class Empresa {
         C2.calcularCostoObra();
         OD1.calcularCostoObra();
 
-        this.hList.add(H1);
-        this.hList.add(H2);
-        this.cList.add(C1);
-        this.cList.add(C2);
-        this.oDList.add(OD1);
         this.obrasList.add(H1);
         this.obrasList.add(H2);
         this.obrasList.add(C1);
         this.obrasList.add(C2);
         this.obrasList.add(OD1);
-/*
-        try {
-            JSONArray arreglo = new JSONArray();
-            JSONObject objeto = new JSONObject();
-
-            objeto.put("Nombre de Empresa", this.nombre);
-            objeto.put("Arquitectos", this.aList);
-            objeto.put("Maestros Mayores de Obras", this.mList);
-            objeto.put("Obreros", this.oList);
-            objeto.put("Obras Domesticas", this.oDList);
-            objeto.put("Comercios", this.cList);
-            objeto.put("Hoteles", this.hList);
-
-            arreglo.put(objeto);
-
-            //JsonUtiles.grabar(arreglo);
-            //JsonUtiles.leer();
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
     }
 
     public String getNombre() { return nombre; }
 
-    public List<Arquitecto> getaList() { return aList; }
+    public List<Empleado> getempleadosList() { return empleadosList; }
 
-    public List<MaestroMObra> getmList() { return mList; }
-
-    public List<Obrero> getoList() { return oList; }
-
-    public List<ObraDomestica> getoDList() { return oDList; }
-
-    public List<Hotel> gethList() { return hList; }
-
-    public List<Comercio> getcList() { return cList; }
+    public List<Obra> getObrasList() { return obrasList; }
 
     public void mostrarObras(){
-        System.out.printf("Listado de obras:\n");
+        System.out.print("Listado de obras: \n");
         for (Obra o: obrasList
         ) {
             if (o instanceof ObraDomestica){
                 ObraDomestica oD = (ObraDomestica) o;
-                System.out.printf("Obra Domestica: Costo Total: $%.2f\n",oD.getCostoObra());
+                oD.mostrar();
             }else if (o instanceof  Hotel){
                 Hotel h = (Hotel) o;
-                System.out.printf("Hotel '%s': Costo Total: $%.2f\n",h.getObraNombre(), h.getCostoObra());
+                h.mostrar();
             }else if (o instanceof  Comercio){
                 Comercio c = (Comercio) o;
-                System.out.printf("Comercio '%s': Costo Total: $%.2f\n",c.getObraNombre(),c.getCostoObra());
+                c.mostrar();
+            }
+        }
+    }
+
+    public Empleado getEmpleado(int index) {
+        Empleado e = getempleadosList().get(index);
+        if (e instanceof Arquitecto){
+            Arquitecto a = (Arquitecto) e;
+            return a;
+        }else if (e instanceof  MaestroMObra){
+            MaestroMObra m = (MaestroMObra) e;
+            return m;
+        }else {
+            Obrero o = (Obrero) e;
+            return o;
+        }
+    }
+
+    public void mostrarEmpleados(){
+        System.out.println("Listado de empleados: \n");
+        for (Empleado e: empleadosList
+        ) {
+            if (e instanceof Arquitecto){
+                Arquitecto a = (Arquitecto) e;
+                a.mostrar();
+            }else if (e instanceof  MaestroMObra){
+                MaestroMObra m = (MaestroMObra) e;
+                m.mostrar();
+            }else if (e instanceof  Obrero){
+                Obrero o = (Obrero) e;
+                o.mostrar();
             }
         }
     }

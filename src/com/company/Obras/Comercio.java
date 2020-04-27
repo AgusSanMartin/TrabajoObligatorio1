@@ -3,8 +3,9 @@ package com.company.Obras;
 import com.company.Empleados.Arquitecto;
 import com.company.Empleados.MaestroMObra;
 import com.company.Empleados.Obrero;
+import com.company.Listable;
 
-public class Comercio extends ObraComercial{
+public class Comercio extends ObraComercial implements Listable {
     private String rubro;
 
     public Comercio(String direccion,
@@ -23,4 +24,15 @@ public class Comercio extends ObraComercial{
 
     public String getRubro() { return rubro; }
 
+    @Override
+    public void mostrar() {
+        System.out.printf("Comercio '%s': Direccion: %s, Dias de obra: %d, Mts²: %d, Costo Empleados: %d, Rubro: %s, Costo Total de la obra: $%.2f\n"
+                ,getObraNombre()
+                ,getDireccion()
+                ,getDiasObra()
+                ,getMtsCuadrados()
+                ,getCostoEmpleados()
+                ,getRubro()
+                ,getCostoObra());
+    }
 }

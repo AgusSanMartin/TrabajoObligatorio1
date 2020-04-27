@@ -1,8 +1,9 @@
 package com.company.Empleados;
 
 import com.company.Constructores;
+import com.company.Listable;
 
-public class Obrero extends Empleado implements Constructores {
+public class Obrero extends Empleado implements Constructores, Listable {
     private int edad;
 
     public Obrero(String nombre, String DNI, String TEL, int edad){
@@ -14,7 +15,17 @@ public class Obrero extends Empleado implements Constructores {
     public int getEdad() { return edad; }
 
     @Override
-    public void Construir() {
+    public void construir() {
         System.out.printf("Obrero: %s construyendo!\n",getNombre());
+    }
+
+    @Override
+    public void mostrar() {
+        System.out.printf("Obrero: %s, DNI: %s, TEL: %s, Edad: %s, Costo: %s \n"
+                ,getNombre()
+                ,getDNI()
+                ,getTEL()
+                ,getEdad()
+                ,getCostoPdia());
     }
 }
